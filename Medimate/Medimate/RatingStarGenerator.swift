@@ -19,10 +19,17 @@ class RatingStarGenerator: NSObject {
             starts += "★"
             number--
         }
+        
         if number > 0 && number < 1
         {
             starts += "✩"
-        }        
+        }
+        
+        while starts.characters.count < 5
+        {
+            starts += "✩"
+        }
+        
         return starts
     }
 }

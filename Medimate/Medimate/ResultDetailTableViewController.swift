@@ -1,25 +1,23 @@
 //
-//  SearchListTableViewController.swift
+//  ResultDetailTableViewController.swift
 //  Medimate
 //
-//  Created by 一川 黄 on 19/03/2016.
+//  Created by 一川 黄 on 20/03/2016.
 //  Copyright © 2016 Team MarshGhatti. All rights reserved.
 //
 
 import UIKit
 
-class SearchListTableViewController: UITableViewController {
+class ResultDetailTableViewController: UITableViewController {
 
-    var searchCategory: String!
-    var sample: GP!
+    var result:GP!
+    var rowSeleted:Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.automaticallyAdjustsScrollViewInsets = false;
-        self.navigationItem.title = self.searchCategory
-        
-        self.sample = GP(name: "Dr.Henrietta Libhaber")
+        self.navigationItem.title = self.result.name
+        print(rowSeleted)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -43,18 +41,15 @@ class SearchListTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         if section == 0
         {
-            if self.searchCategory == "GP"
-            {
-                return 3
-            }
-            else
-            {
-                return 2
-            }
+            return 1
         }
         if section == 1
         {
-            return 3
+            if self.result.website != nil
+            {
+                return 3
+            }
+            return 2
         }
         return 0
     }
@@ -63,83 +58,53 @@ class SearchListTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.section == 0
         {
-            let cell = tableView.dequeueReusableCellWithIdentifier("filterCell", forIndexPath: indexPath) as! FilterCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("headerCell", forIndexPath: indexPath) as! DetailHeaderCell
+            cell.picView.image = ImageGenerator.imageFromURLString(self.result.imageURL)
+            cell.nameLabel.text = self.result.name
+            cell.distanceLabel.text = "\(self.result.distance) km"
+            cell.ratingLabel.text = "Rating: \(RatingStarGenerator.ratingStarsFromDouble(self.result.rating))"
+            cell.typeLabel.text = "General Practitioner"
+            cell.reviewLabel.text = "\(self.result.numberOfReview) Reviews"
+            return cell
+        }
+        if indexPath.section == 1
+        {
+            let cell = tableView.dequeueReusableCellWithIdentifier("contactCell", forIndexPath: indexPath) as! DetailContactCell
             if indexPath.row == 0
             {
-                cell.filterName.text = "Search Location"
-                cell.filterValue.text = "Current Location"
+                cell.valueLabel.text = self.result.address
             }
             if indexPath.row == 1
             {
-                if self.searchCategory == "GP"
-                {
-                    cell.filterName.text = "Language Prefer"
-                    cell.filterValue.text = "中文"
-                }
-                else
-                {
-                    cell.filterName.text = "Sort By"
-                    cell.filterValue.text = "Distance"
-                }
+                cell.valueLabel.text = "Phone: \(self.result.phone)"
             }
-            if indexPath.row == 2 && self.searchCategory == "GP"
+            if indexPath.row == 2 && self.result.website != nil
             {
-                cell.filterName.text = "Sort By"
-                cell.filterValue.text = "Distance"
+                cell.valueLabel.text = "Website: \(self.result.website)"
             }
-            return cell
         }
-        else
-        {
-            let cell = tableView.dequeueReusableCellWithIdentifier("resultCell", forIndexPath: indexPath) as! SearchResultCell
-            cell.nameLabel.text = self.sample.name
-            let stars = RatingStarGenerator.ratingStarsFromDouble(self.sample.rating)
-            cell.ratingLabel.text = "Rating: \(stars)"
-            cell.addressLabel.text = self.sample.address
-            cell.reviewsLabel.text = "\(self.sample.numberOfReview) reviews"
-            cell.distanceLabel.text = "\(self.sample.distance) km"
-            cell.picView.image = ImageGenerator.imageFromURLString(self.sample.imageURL)
-            return cell
-        }
+        return UITableViewCell()
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.section == 0
         {
-            return 25
+            return 116
         }
         if indexPath.section == 1
         {
-            return 84
+            return 40
         }
         return 0
     }
-    
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0
-        {
-            return 75
-        }
-        return self.tableView.sectionHeaderHeight - 15
-    }
-    
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 1
-        {
-            return "Results"
-        }
-        return ""
-    }
 
-    
+    /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
-        return false
+        return true
     }
-
-    
-    
+    */
 
     /*
     // Override to support editing the table view.
@@ -168,18 +133,14 @@ class SearchListTableViewController: UITableViewController {
     }
     */
 
-    
+    /*
     // MARK: - Navigation
 
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "detailSegue"
-        {
-            let indexPath = self.tableView.indexPathForSelectedRow!
-            let controller = segue.destinationViewController as! ResultDetailTableViewController
-            controller.result = self.sample
-            controller.rowSeleted = indexPath.row
-        }
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
     }
-    
+    */
 
 }
