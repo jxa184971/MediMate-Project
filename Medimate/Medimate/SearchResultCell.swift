@@ -10,9 +10,11 @@ import UIKit
 
 class SearchResultCell: UITableViewCell {
 
+
     @IBOutlet var picView: UIImageView!
-    @IBOutlet var name: UILabel!
-    @IBOutlet var rating: UILabel!
-    @IBOutlet var location: UILabel!
-    @IBOutlet var distance: UILabel!
+    @IBOutlet var nameLabel: UILabel!
+    @IBOutlet var ratingLabel: UILabel!
+    @IBOutlet var addressLabel: UILabel!
+    @IBOutlet var distanceLabel: UILabel!
+    @IBOutlet var reviewsLabel: UILabel!
 }
