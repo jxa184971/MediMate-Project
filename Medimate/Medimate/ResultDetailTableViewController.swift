@@ -59,12 +59,38 @@ class ResultDetailTableViewController: UITableViewController {
         if indexPath.section == 0
         {
             let cell = tableView.dequeueReusableCellWithIdentifier("headerCell", forIndexPath: indexPath) as! DetailHeaderCell
-            cell.picView.image = ImageGenerator.imageFromURLString(self.result.imageURL)
             cell.nameLabel.text = self.result.name
             cell.distanceLabel.text = "\(self.result.distance) km"
             cell.ratingLabel.text = "Rating: \(RatingStarGenerator.ratingStarsFromDouble(self.result.rating))"
             cell.typeLabel.text = "General Practitioner"
             cell.reviewLabel.text = "\(self.result.numberOfReview) Reviews"
+            
+            // asynchronouse loading images from URL
+            if cell.picView.image == nil
+            {
+                let session = NSURLSession.sharedSession()
+                let url = NSURL(string: self.result.imageURL)
+                let task = session.dataTaskWithURL(url!, completionHandler:
+                    {
+                        (data, response, error) -> Void in
+                        if error != nil
+                        {
+                            print("error when downloading image from URL")
+                            print("Error: \(error!.localizedDescription)")
+                        } else
+                        {
+                            
+                            let image = UIImage(data: data!)
+                            dispatch_async(dispatch_get_main_queue(),
+                                {
+                                    let cellToUpdate = tableView.cellForRowAtIndexPath(indexPath) as! DetailHeaderCell
+                                    cellToUpdate.picView.image = image
+                                    self.tableView.reloadData()
+                            })
+                        }
+                })
+                task.resume()
+            }
             return cell
         }
         if indexPath.section == 1
@@ -82,6 +108,7 @@ class ResultDetailTableViewController: UITableViewController {
             {
                 cell.valueLabel.text = "Website: \(self.result.website)"
             }
+            return cell
         }
         return UITableViewCell()
     }
@@ -98,13 +125,6 @@ class ResultDetailTableViewController: UITableViewController {
         return 0
     }
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
 
     /*
     // Override to support editing the table view.

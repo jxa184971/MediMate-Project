@@ -48,6 +48,6 @@ class GP: NSObject {
         self.distance = 1.8
         
         self.website = "russellbensky.wordpress.com"
-        self.imageURL = "http://www.uchicagokidshospital.org/images/cms/uch1001350-2.jpg"
+        self.imageURL = "http://gloucestershire.respectyourself.info/wp-content/uploads/2012/07/Brunswick-clinic-Room.jpg"
     }
 }

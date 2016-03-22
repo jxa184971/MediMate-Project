@@ -98,7 +98,34 @@ class SearchListTableViewController: UITableViewController {
             cell.addressLabel.text = self.sample.address
             cell.reviewsLabel.text = "\(self.sample.numberOfReview) reviews"
             cell.distanceLabel.text = "\(self.sample.distance) km"
-            cell.picView.image = ImageGenerator.imageFromURLString(self.sample.imageURL)
+
+            // asynchronous loading images from URL
+            if cell.picView.image == nil
+            {
+                let session = NSURLSession.sharedSession()
+                let url = NSURL(string: self.sample.imageURL)
+                let task = session.dataTaskWithURL(url!, completionHandler:
+                    {
+                        (data, response, error) -> Void in
+                        if error != nil
+                        {
+                            print("error when downloading image from URL")
+                            print("Error: \(error!.localizedDescription)")
+                        } else
+                        {
+
+                            let image = UIImage(data: data!)
+                            dispatch_async(dispatch_get_main_queue(),
+                                {
+                                    let cellToUpdate = tableView.cellForRowAtIndexPath(indexPath) as! SearchResultCell
+                                    cellToUpdate.picView.image = image
+                                    self.tableView.reloadData()
+                            })
+                        }
+                    })
+                task.resume()
+            }
+            
             return cell
         }
     }

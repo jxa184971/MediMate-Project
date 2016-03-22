@@ -208,10 +208,10 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="resultCell" rowHeight="84" id="9m8-22-r3Q" customClass="SearchResultCell" customModule="Medimate" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="139" width="600" height="84"/>
+                                <rect key="frame" x="0.0" y="138.5" width="600" height="84"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9m8-22-r3Q" id="TZS-RH-hTy">
-                                    <rect key="frame" x="0.0" y="0.0" width="567" height="84"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="83.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2rP-xE-q9a">
@@ -315,11 +315,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="headerCell" rowHeight="116" id="6IY-jZ-Eo5" customClass="DetailHeaderCell" customModule="Medimate" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="headerCell" rowHeight="116" id="6IY-jZ-Eo5" customClass="DetailHeaderCell" customModule="Medimate" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="113.5" width="600" height="116"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6IY-jZ-Eo5" id="Zuq-Wp-c08">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="116"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="115.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="B9Z-R1-PV5">
@@ -402,14 +402,14 @@
                                     <outlet property="typeLabel" destination="8I0-9f-4A5" id="bHV-9y-lQN"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="contactCell" rowHeight="44" id="DSY-2e-Wfq" customClass="DetailContactCell" customModule="Medimate" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="230" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="contactCell" rowHeight="44" id="JdR-lf-eED" customClass="DetailContactCell" customModule="Medimate" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="229.5" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DSY-2e-Wfq" id="mKX-75-cvN">
-                                    <rect key="frame" x="0.0" y="0.0" width="567" height="44"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JdR-lf-eED" id="402-l0-eTB">
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q8X-OG-M6n">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jyx-Sc-UnI">
                                             <rect key="frame" x="8" y="11" width="559" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -417,14 +417,14 @@
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="q8X-OG-M6n" firstAttribute="leading" secondItem="mKX-75-cvN" secondAttribute="leadingMargin" id="2T7-BM-4Dm"/>
-                                        <constraint firstAttribute="trailing" secondItem="q8X-OG-M6n" secondAttribute="trailing" id="Vha-KI-G23"/>
-                                        <constraint firstItem="q8X-OG-M6n" firstAttribute="centerY" secondItem="mKX-75-cvN" secondAttribute="centerY" id="lNa-eQ-gFl"/>
-                                        <constraint firstItem="q8X-OG-M6n" firstAttribute="top" secondItem="mKX-75-cvN" secondAttribute="topMargin" constant="3" id="vgQ-qT-0hq"/>
+                                        <constraint firstItem="jyx-Sc-UnI" firstAttribute="top" secondItem="402-l0-eTB" secondAttribute="topMargin" constant="3" id="Ng1-Ru-SXu"/>
+                                        <constraint firstItem="jyx-Sc-UnI" firstAttribute="leading" secondItem="402-l0-eTB" secondAttribute="leadingMargin" id="Qct-oW-2Ah"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="jyx-Sc-UnI" secondAttribute="trailing" constant="-8" id="i1g-ZV-Yft"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="jyx-Sc-UnI" secondAttribute="bottom" constant="3.5" id="uOm-hV-DFj"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="valueLabel" destination="q8X-OG-M6n" id="b8k-3n-Cxy"/>
+                                    <outlet property="valueLabel" destination="jyx-Sc-UnI" id="iv2-ml-VEt"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
