@@ -23,7 +23,7 @@ class GP: NSObject {
     var openningHourSun:String!
     
     var rating:Double!
-    var numberOfReview:Int16!
+    var numberOfReview:Int!
     var reviews:Array<Review>?
     var distance:Double!
     
@@ -49,5 +49,16 @@ class GP: NSObject {
         
         self.website = "russellbensky.wordpress.com"
         self.imageURL = "http://gloucestershire.respectyourself.info/wp-content/uploads/2012/07/Brunswick-clinic-Room.jpg"
+    }
+    
+    init(name:String, address:String, phone:String, rating:Double, numberOfReview: Int, distance:Double, website:String, imageURL:String) {
+        self.name = name
+        self.address = address
+        self.phone = phone
+        self.rating = rating
+        self.numberOfReview = numberOfReview
+        self.distance = distance
+        self.website = website
+        self.imageURL = imageURL
     }
 }

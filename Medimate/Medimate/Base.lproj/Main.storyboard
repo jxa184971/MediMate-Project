@@ -205,6 +205,7 @@
                                 <connections>
                                     <outlet property="filterName" destination="cyG-K2-3En" id="upS-f7-Hnt"/>
                                     <outlet property="filterValue" destination="RQs-qH-WI6" id="Kzi-g9-b0f"/>
+                                    <segue destination="lCo-bO-qoh" kind="show" identifier="filterSegue" id="iOc-jg-7iC"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="resultCell" rowHeight="84" id="9m8-22-r3Q" customClass="SearchResultCell" customModule="Medimate" customModuleProvider="target">
@@ -305,6 +306,51 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SRD-Y9-2AH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2238" y="-536"/>
+        </scene>
+        <!--Filter Table View Controller-->
+        <scene sceneID="flS-jw-sb6">
+            <objects>
+                <tableViewController id="lCo-bO-qoh" customClass="FilterTableViewController" customModule="Medimate" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="O0f-Eo-nBA">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="valueCell" id="ywW-oo-U41" customClass="FilterValueCell" customModule="Medimate" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="113.5" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ywW-oo-U41" id="lYz-wt-1qx">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ts8-dB-QuW">
+                                            <rect key="frame" x="8" y="11" width="584" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="ts8-dB-QuW" firstAttribute="leading" secondItem="lYz-wt-1qx" secondAttribute="leadingMargin" id="0DW-YY-cmP"/>
+                                        <constraint firstItem="ts8-dB-QuW" firstAttribute="top" secondItem="lYz-wt-1qx" secondAttribute="topMargin" constant="3" id="432-FE-Aku"/>
+                                        <constraint firstItem="ts8-dB-QuW" firstAttribute="centerY" secondItem="lYz-wt-1qx" secondAttribute="centerY" id="9vQ-Vb-jFU"/>
+                                        <constraint firstItem="ts8-dB-QuW" firstAttribute="trailing" secondItem="lYz-wt-1qx" secondAttribute="trailingMargin" id="gHi-kY-DiY"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="valueLabel" destination="ts8-dB-QuW" id="PSi-yH-nqQ"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="lCo-bO-qoh" id="kTc-05-5p8"/>
+                            <outlet property="delegate" destination="lCo-bO-qoh" id="Xgy-aa-0QH"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rJo-Nf-6Z9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3234" y="-1300"/>
         </scene>
         <!--Result Detail Table View Controller-->
         <scene sceneID="TTF-l0-oeX">
@@ -436,7 +482,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8wV-VY-1Sr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3038" y="-536"/>
+            <point key="canvasLocation" x="3234" y="-536"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="56W-SP-0yP">

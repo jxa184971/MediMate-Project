@@ -12,6 +12,7 @@ class SearchListTableViewController: UITableViewController {
 
     var searchCategory: String!
     var sample: GP!
+    var filter:[String:String]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +21,9 @@ class SearchListTableViewController: UITableViewController {
         self.navigationItem.title = self.searchCategory
         
         self.sample = GP(name: "Dr.Henrietta Libhaber")
+        
+        self.filter = ["searchLocation":"Current Location", "language":"English", "sortBy":"Distance"]
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -67,25 +71,25 @@ class SearchListTableViewController: UITableViewController {
             if indexPath.row == 0
             {
                 cell.filterName.text = "Search Location"
-                cell.filterValue.text = "Current Location"
+                cell.filterValue.text = self.filter["searchLocation"]
             }
             if indexPath.row == 1
             {
                 if self.searchCategory == "GP"
                 {
                     cell.filterName.text = "Language Prefer"
-                    cell.filterValue.text = "中文"
+                    cell.filterValue.text = self.filter["language"]
                 }
                 else
                 {
                     cell.filterName.text = "Sort By"
-                    cell.filterValue.text = "Distance"
+                    cell.filterValue.text = self.filter["sortBy"]
                 }
             }
             if indexPath.row == 2 && self.searchCategory == "GP"
             {
                 cell.filterName.text = "Sort By"
-                cell.filterValue.text = "Distance"
+                cell.filterValue.text = self.filter["sortBy"]
             }
             return cell
         }
@@ -205,6 +209,28 @@ class SearchListTableViewController: UITableViewController {
             let controller = segue.destinationViewController as! ResultDetailTableViewController
             controller.result = self.sample
             controller.rowSeleted = indexPath.row
+        }
+        
+        if segue.identifier == "filterSegue"
+        {
+            let controller = segue.destinationViewController as! FilterTableViewController
+            let indexPath = self.tableView.indexPathForSelectedRow!
+            if indexPath.row == 0
+            {
+                controller.filterType = "searchLocation"
+            }
+            if indexPath.row == 1 && self.searchCategory == "GP"
+            {
+                controller.filterType = "language"
+            }
+            if indexPath.row == 2 && self.searchCategory == "GP"
+            {
+                controller.filterType = "sortBy"
+            }
+            if indexPath.row == 1 && self.searchCategory != "GP"
+            {
+                controller.filterType = "sortBy"
+            }
         }
     }
     
