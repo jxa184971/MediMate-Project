@@ -13,6 +13,7 @@ class GP: NSObject {
     var name:String!
     var address:String!
     var phone:String!
+    var language: String!
     var breif:String?
     
     var latitude:Double!
@@ -51,10 +52,11 @@ class GP: NSObject {
         self.imageURL = "http://gloucestershire.respectyourself.info/wp-content/uploads/2012/07/Brunswick-clinic-Room.jpg"
     }
     
-    init(name:String, address:String, phone:String, rating:Double, numberOfReview: Int, distance:Double, website:String, imageURL:String) {
+    init(name:String, address:String, phone:String, language:String, rating:Double, numberOfReview: Int, distance:Double, website:String, imageURL:String) {
         self.name = name
         self.address = address
         self.phone = phone
+        self.language = language
         self.rating = rating
         self.numberOfReview = numberOfReview
         self.distance = distance

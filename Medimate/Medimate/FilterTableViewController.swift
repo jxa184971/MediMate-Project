@@ -68,7 +68,6 @@ class FilterTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let controller = self.navigationController?.viewControllers[1] as! SearchListTableViewController
         controller.filter[self.filterType] = self.valueSet[indexPath.row]
-        controller.tableView.reloadData()
         self.navigationController?.popToViewController(controller, animated: true)
     }
 
